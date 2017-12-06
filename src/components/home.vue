@@ -9,13 +9,16 @@
       </ul>
     </div>
     <el-card class="box-card">
-        <div v-for="(item,index) in content "  class="item" :class="{'spe':(index%2===0)}">
+      <div v-for="(item,index) in content "  class="item" :class="{'spe':(index%2===0)}">
           <img :src="item.author.avatar_url">
           <div class="context">
             <p>{{item.title}}</p>
           </div>
           <hr v-show="( (index%10)!==0 || index===0)">
-        </div>
+      </div>
+      <el-pagination background layout="prev, pager, next" class="pagi"
+        :total="100"    @current-change="PageChange">
+      </el-pagination>
     </el-card>
   </div>
 </template>
@@ -25,17 +28,23 @@
   export default {
     data () {
       return {
-        msg: '', content: []
+        msg: '', content: [], param: {}
+      }
+    },
+    methods:{
+      PageChange (val) {
+        this.param.page = val
+        auth.getTopics(this, this.param)
       }
     },
     mounted () {
-      let param = {
+      this.param = {
         page: 1,
         tab: 'share',
         limit: 10,
         mdrender: false
       }
-      auth.getTopics(this, param)
+      auth.getTopics(this, this.param)
     }
   }
 </script>
@@ -74,7 +83,7 @@
     cursor: pointer;
   }
   .box-card{
-    width: 80%;
+    width: 75%;
     margin:0 auto;
   }
   .item{
@@ -97,7 +106,7 @@
     height:60px;
     float: left;
     margin-left: 30px;
-    font-size: 24px;
+    font-size: 22px;
     font-family: "Helvetica Neue", Helvetica,"Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   }
   .item hr{
@@ -109,6 +118,9 @@
     position: absolute;
     bottom:-10px;
     left: 0;
+  }
+  .pagi{
+    margin-top: 25px;
   }
   .spe{
    * background-color: #ccc;
