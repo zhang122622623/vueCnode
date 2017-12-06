@@ -1,6 +1,8 @@
 # cnode
 
-> A Vue.js project
+> A Vue.js project ，重构Cnode社区
+
+> 技术栈：vue+vue-router+vue-resource+Cnode API
 
 ## Build Setup
 

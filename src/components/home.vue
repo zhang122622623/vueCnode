@@ -80,7 +80,7 @@
   .item{
     width: 94%;
     height:70px;
-    margin:0 auto;
+    margin:0 auto 20px;
     clear: both;
     position: relative;
   }
@@ -91,6 +91,7 @@
     margin-top: 10px;
     margin-left: 1%;
     float: left;
+    cursor: pointer;
   }
   .item .context{
     height:60px;
@@ -101,14 +102,15 @@
   }
   .item hr{
     clear: both;
-    height: 1px;
+    height: 2px;
+    border: 1px solid #ccc;
+    background-color: #ccc;
     width: 100%;
-    color: #000;
     position: absolute;
     bottom:-10px;
     left: 0;
   }
   .spe{
-    background-color: #ccc;
+   * background-color: #ccc;
   }
 </style>
