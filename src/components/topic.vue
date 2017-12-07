@@ -4,10 +4,14 @@
       <div class="label">
         <p>{{topic.title}}</p>
         <span>创建于：{{create}}</span>
-        <span>回复：{{topic.reply_count}}</span>
         <span>浏览量：{{topic.visit_count}}</span>
+        <span>回复：{{topic.reply_count}}</span>
       </div>
       <p>{{topic.content}}</p>
+    </el-card>
+    <el-card class="box-card1">
+      <p>作者</p>
+      <img :src="topic.author.avatar_url">
     </el-card>
   </div>
 </template>
@@ -17,7 +21,7 @@
   export default{
     data () {
       return {
-        id: '', topic: {}, create: ''
+        id: '', topic: {author: {}}, create: ''
       }
     },
     mounted () {
@@ -39,22 +43,27 @@
     padding-top: 25px;
   }
   .box-card{
-    width: 75%;
-    margin:0 auto;
+    width: 70%;
+    float: left;
+    margin:0 5%;
     background: #F9FBFC;
   }
   .label{
     width: 98%;
     margin:0 auto;
   }
+  .label p{
+    font-size: 20px;
+    margin: 10px auto;
+  }
   .label span{
     font-size: 16px;
     margin-right: 20px;
     color:#ccc;
   }
-  @media screen and (max-width: 1300px){
-    .box-card{
-      width: 90%;
-    }
+  .box-card1{
+    width: 15%;
+    float: left;
+    background: #F9FBFC;
   }
 </style>
