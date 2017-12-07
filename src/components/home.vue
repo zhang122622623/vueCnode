@@ -9,10 +9,13 @@
       </ul>
     </div>
     <el-card class="box-card">
-      <div v-for="(item,index) in content "  class="item" :class="{'spe':(index%2===0)}">
+      <div v-for="(item,index) in info "  class="item" :class="{'spe':(index%2===0)}">
           <img :src="item.author.avatar_url">
           <div class="context">
             <p>{{item.title}}</p>
+            <span>回复：{{item.reply_count}}</span>
+            <span>浏览：{{item.visit_count}}</span>
+            <span>创建于：{{create[index]}}</span>
           </div>
           <hr v-show="( (index%10)!==0 || index===0)">
       </div>
@@ -28,10 +31,10 @@
   export default {
     data () {
       return {
-        msg: '', content: [], param: {}
+        msg: '', info: [], param: {}, create: []
       }
     },
-    methods:{
+    methods: {
       PageChange (val) {
         this.param.page = val
         auth.getTopics(this, this.param)
@@ -85,10 +88,16 @@
   .box-card{
     width: 75%;
     margin:0 auto;
+    background: #F9FBFC;
+  }
+  @media screen and (max-width: 1300px){
+    .box-card{
+      width: 90%;
+    }
   }
   .item{
     width: 94%;
-    height:70px;
+    min-height:70px;
     margin:0 auto 20px;
     clear: both;
     position: relative;
@@ -103,16 +112,25 @@
     cursor: pointer;
   }
   .item .context{
-    height:60px;
+    height:100%;
     float: left;
+    text-align: left;
     margin-left: 30px;
-    font-size: 22px;
     font-family: "Helvetica Neue", Helvetica,"Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+  .context p{
+    font-size: 21px;
+    margin:5px  0 ;
+  }
+  .item span{
+    font-size: 16px;
+    margin-right: 20px;
+    color:#ccc;
   }
   .item hr{
     clear: both;
-    height: 2px;
-    border: 1px solid #ccc;
+    height: 0;
+    border-top: 1px solid #ccc;
     background-color: #ccc;
     width: 100%;
     position: absolute;

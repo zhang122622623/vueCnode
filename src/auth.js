@@ -4,7 +4,12 @@ export default {
       let success = res.data.success
       if (success) {
         let data = res.data.data
-        context.content = data
+        context.info = data
+        let create = []
+        data.map(function (e, i) {
+          create[i] = e.create_at.split('T')[0]
+        })
+        context.create = create
         console.log(data)
       } else {
         console.log('Err')
