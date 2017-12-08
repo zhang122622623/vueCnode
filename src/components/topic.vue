@@ -1,17 +1,20 @@
 <template>
-  <div class="wrapper">
-    <el-card class="box-card">
+  <div class="wrapper1">
+    <el-card class="box-card1">
       <div class="label">
         <p>{{topic.title}}</p>
         <span>创建于：{{create}}</span>
         <span>浏览量：{{topic.visit_count}}</span>
         <span>回复：{{topic.reply_count}}</span>
       </div>
-      <p>{{topic.content}}</p>
+      <div v-html="topic.content" id="content"></div>
     </el-card>
-    <el-card class="box-card1">
-      <p>作者</p>
-      <img :src="topic.author.avatar_url">
+
+    <el-card class="box-card2">
+      <p>作者:</p>
+      <img :src="topic.author.avatar_url"><span>{{loginname}}</span>
+      <p>积分：{{score}}</p>
+      <p>Github：<a :href="'https://github.com/'+loginname">https://github.com/{{loginname}}</a></p>
     </el-card>
   </div>
 </template>
@@ -21,7 +24,7 @@
   export default{
     data () {
       return {
-        id: '', topic: {author: {}}, create: ''
+        id: '', topic: {author: {}}, create: '', loginname: '', user: '', score: ''
       }
     },
     mounted () {
@@ -29,24 +32,26 @@
       this.id = path.split('/')[2]
       // console.log(this.id)
       let param = {
-        mdrender: false
+        mdrender: true
       }
       auth.getTopic(this, this.id, param)
     }
   }
 </script>
 
-<style scoped>
-  .wrapper{
+<style>
+  @import '../../static/markdown-github.css';
+  .wrapper1{
     height: 100%;
     width: 100%;
     padding-top: 25px;
   }
-  .box-card{
+  .box-card1{
     width: 70%;
     float: left;
-    margin:0 5%;
+    margin:0 3%;
     background: #F9FBFC;
+    text-align: left;
   }
   .label{
     width: 98%;
@@ -61,9 +66,52 @@
     margin-right: 20px;
     color:#ccc;
   }
-  .box-card1{
-    width: 15%;
+  #content{
+    font-size: 16px;
+  }
+  #content h1{
+    font-size:26px;
+  }
+  #content h2{
+    font-size:22px;
+  }
+  #content img{
+    max-height: 100%;
+    max-width: 100%;
+  }
+  .box-card2{
+    width: 20%;
     float: left;
     background: #F9FBFC;
+    text-align: left;
+    max-width: 320px;
+  }
+  .box-card2 p{
+    font-size: 16px;
+    margin:0 auto 5px;
+    clear: both;
+  }
+  .box-card2 img{
+    height:80px;
+    width: 80px;
+    border-radius: 4px;
+    margin: 10px 15px 15px 0;
+    float: left;
+  }
+  .box-card2 span{
+    float: left;
+    display: inline-block;
+    margin-top: 40px;
+    font-size: 18px;
+    color:#ccc;
+  }
+  .box-card2 a{
+    text-decoration: none;
+    font-style: italic;
+    font-size: 16px;
+  }
+  .box-card2 a:hover{
+    color: #aaffaa;
   }
 </style>
+
