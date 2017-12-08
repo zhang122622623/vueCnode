@@ -14,7 +14,7 @@
       <p>作者:</p>
       <img :src="topic.author.avatar_url"><span>{{loginname}}</span>
       <p>积分：{{score}}</p>
-      <p>Github：<a :href="'https://github.com/'+loginname">https://github.com/{{loginname}}</a></p>
+      <p>Github：<a :href="'https://github.com/'+loginname" target="_blank">https://github.com/{{loginname}}</a></p>
     </el-card>
   </div>
 </template>
@@ -111,7 +111,8 @@
     font-size: 16px;
   }
   .box-card2 a:hover{
-    color: #aaffaa;
+    color: wheat;
+    text-decoration: underline;
   }
 </style>
 
