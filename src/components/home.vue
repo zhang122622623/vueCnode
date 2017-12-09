@@ -58,7 +58,7 @@
   }
   .box-card{
     width: 75%;
-    margin:0 auto;
+    margin:0 auto 15px;
     background: #F9FBFC;
   }
   .item{

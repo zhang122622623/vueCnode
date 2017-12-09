@@ -11,7 +11,7 @@ export default {
         })
         context.create = create
       } else {
-        console.log('Error')
+        alert('Something Wrong!')
       }
     }, function (err) {
       console.log(err)
@@ -26,7 +26,17 @@ export default {
         context.create = context.topic.create_at.split('T')[0]
         context.loginname = context.topic.author.loginname
         that.getUser(context, context.loginname)
-        // console.log(context.topic)
+        context.replies = context.topic.replies
+        context.replies.map(function (e, i) {
+          let t1 = e.create_at.split('T')
+          let t2 = t1[1].split('.')[0]
+          context.replyTime[i] = t1[0] + ' ' + t2
+          context.ups[i] = e.ups.length
+        })
+        console.log( context.replies)
+      } else {
+        alert('Something Wrong!')
+        this.$router.push('/')
       }
     }, function (err) {
       console.log(err)
@@ -38,7 +48,9 @@ export default {
       if (success) {
         let data = res.data.data
         context.score = data.score
-        console.log(res.data)
+      } else {
+        alert('Something Wrong!')
+        this.$router.push('/')
       }
     }, function (err) {
       console.log(err)

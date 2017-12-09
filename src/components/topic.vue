@@ -16,6 +16,16 @@
       <p>积分：{{score}}</p>
       <p>Github：<a :href="'https://github.com/'+loginname" target="_blank">https://github.com/{{loginname}}</a></p>
     </el-card>
+
+    <el-card class="box-card1 reply-card">
+      <span>{{topic.reply_count}} 回复</span>
+      <div class="reply" v-for="(item, index) in replies">
+        <hr>
+        <img :src="item.author.avatar_url">
+        <span>{{item.author.loginname}} <label>{{replyTime[index]}}</label></span>
+        <span class="ups" v-show="(ups[index]!==0)"><img src="../assets/ups.jpg"> <label>{{ups[index]}}</label></span>
+      </div>
+    </el-card>
   </div>
 </template>
 
@@ -24,7 +34,7 @@
   export default{
     data () {
       return {
-        id: '', topic: {author: {}}, create: '', loginname: '', user: '', score: ''
+        id: '', topic: {author: {}}, create: '', loginname: '', user: '', score: '', replies: [], replyTime: [], ups: []
       }
     },
     mounted () {
@@ -96,6 +106,7 @@
     height:80px;
     width: 80px;
     border-radius: 4px;
+    border:1px solid #ccc;
     margin: 10px 15px 15px 0;
     float: left;
   }
@@ -103,7 +114,7 @@
     float: left;
     display: inline-block;
     margin-top: 40px;
-    font-size: 18px;
+    font-size: 19px;
     color:#ccc;
   }
   .box-card2 a{
@@ -115,5 +126,67 @@
     color: wheat;
     text-decoration: underline;
   }
+
+  .reply-card{
+    margin:15px 3% 10px;
+  }
+  .reply-card span{
+    font-size: 17px;
+    color:#888;
+  }
+  .reply {
+    width: 98%;
+    position: relative;
+    clear: both;
+  }
+  .reply hr{
+    clear: both;
+    height: 0;
+    border-top: 1px solid #ccc;
+    border-bottom: none;
+    background-color: #ccc;
+    width: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+  }
+  .reply img{
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    margin: 20px 10px 0 2%;
+    float: left;
+    cursor: pointer;
+  }
+  .reply span{
+    display: inline-block;
+    float: left;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+  }
+  .reply label{
+    font-size: 15px;
+    color: #ccc;
+    margin-left: 10px;
+  }
+  .reply .ups{
+    float: right;
+    height:30px;
+    width: 60px;
+    margin:10px 15px 0 0;
+  }
+  .ups img{
+    float: left;
+    height:100%;
+    width: 50%;
+    margin:0 4px 0 0;
+    cursor: auto;
+  }
+  .ups label{
+    float: left;
+    display: inline-block;
+    margin-top: 10px;
+   }
 </style>
 
