@@ -79,6 +79,7 @@
     max-height: 100%;
     max-width: 100%;
   }
+
   .box-card2{
     width: 20%;
     float: left;
