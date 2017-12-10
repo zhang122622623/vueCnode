@@ -1,5 +1,6 @@
 <template>
-  <div class="wrapper1"  v-loading.fullscreen.lock="fullscreenLoading">
+  <div class="wrapper1"  v-loading.lock="fullscreenLoading"
+       element-loading-text="拼命加载中">
     <el-card class="box-card1">
       <div class="label">
         <p>{{topic.title}}</p>
@@ -45,9 +46,9 @@
         timer = setInterval(function() {
           let curHeight = document.documentElement.scrollTop || document.body.scrollTop;  // 得到当前高度
           let now = curHeight;
-          let speed = (0 - now) / 7;                              // 随着高度减速
+          let speed = (0 - now) / 7;          // 随着高度减速
           speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
-          if (curHeight === 0) {                          //当前高度为零,停止这次计时器
+          if (curHeight === 0) {               //当前高度为零,停止这次计时器
               clearInterval(timer);
           }
           document.documentElement.scrollTop = curHeight + speed;

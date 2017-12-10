@@ -63,6 +63,6 @@ export default {
     context.fullscreenLoading = true;
     setTimeout(() => {
       context.fullscreenLoading = false;
-    }, 500);
+    }, 800);
   },
 }

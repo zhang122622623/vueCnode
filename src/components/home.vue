@@ -1,5 +1,6 @@
 <template>
-  <div class="wrapper"  v-loading.lock="fullscreenLoading">
+  <div class="wrapper"  v-loading.lock="fullscreenLoading"
+       element-loading-text="拼命加载中">
     <el-card class="box-card">
       <div v-for="(item,index) in info "  class="item">
           <img :src="item.author.avatar_url">
