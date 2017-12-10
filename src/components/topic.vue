@@ -7,6 +7,7 @@
         <span>浏览量：{{topic.visit_count}}</span>
         <span>回复：{{topic.reply_count}}</span>
       </div>
+      <hr class="spe-hr">
       <div v-html="topic.content" id="content"></div>
     </el-card>
 
@@ -17,15 +18,9 @@
       <p>Github：<a :href="'https://github.com/'+loginname" target="_blank">https://github.com/{{loginname}}</a></p>
     </el-card>
 
-    <el-card class="box-card1 reply-card">
-      <span>{{topic.reply_count}} 回复</span>
-      <div class="reply" v-for="(item, index) in replies">
-        <hr>
-        <img :src="item.author.avatar_url">
-        <span>{{item.author.loginname}} <label>{{replyTime[index]}}</label></span>
-        <span class="ups" v-show="(ups[index]!==0)"><img src="../assets/ups.jpg"> <label>{{ups[index]}}</label></span>
-      </div>
-    </el-card>
+    <Reply></Reply>
+
+    <!--<button @click="goTop" id="go_top">返回顶部</button>-->
   </div>
 </template>
 
@@ -35,6 +30,11 @@
     data () {
       return {
         id: '', topic: {author: {}}, create: '', loginname: '', user: '', score: '', replies: [], replyTime: [], ups: []
+      }
+    },
+    methods: {
+      goTop () {
+        window.scrollTo(0, 0)
       }
     },
     mounted () {
@@ -56,6 +56,14 @@
     width: 100%;
     padding-top: 25px;
   }
+  .wrapper1 .spe-hr{
+    height: 0;
+    border-top: 1px solid #ccc;
+    border-bottom: none;
+    background-color: #ccc;
+    width: 102%;
+    margin: 10px 0 10px -1%;
+  }
   .box-card1{
     width: 70%;
     float: left;
@@ -76,20 +84,6 @@
     margin-right: 20px;
     color:#ccc;
   }
-  #content{
-    font-size: 16px;
-  }
-  #content h1{
-    font-size:26px;
-  }
-  #content h2{
-    font-size:22px;
-  }
-  #content img{
-    max-height: 100%;
-    max-width: 100%;
-  }
-
   .box-card2{
     width: 20%;
     float: left;
@@ -127,66 +121,10 @@
     text-decoration: underline;
   }
 
-  .reply-card{
-    margin:15px 3% 10px;
-  }
-  .reply-card span{
-    font-size: 17px;
-    color:#888;
-  }
-  .reply {
-    width: 98%;
-    position: relative;
-    clear: both;
-  }
-  .reply hr{
-    clear: both;
-    height: 0;
-    border-top: 1px solid #ccc;
-    border-bottom: none;
-    background-color: #ccc;
-    width: 100%;
+  #go_top{
     position: absolute;
-    top:0;
-    left: 0;
+    bottom: 20px;
+    right: 30px;
   }
-  .reply img{
-    width: 40px;
-    height: 40px;
-    border-radius: 5px;
-    margin: 20px 10px 0 2%;
-    float: left;
-    cursor: pointer;
-  }
-  .reply span{
-    display: inline-block;
-    float: left;
-    margin-top: 20px;
-    font-size: 16px;
-    color: #333;
-  }
-  .reply label{
-    font-size: 15px;
-    color: #ccc;
-    margin-left: 10px;
-  }
-  .reply .ups{
-    float: right;
-    height:30px;
-    width: 60px;
-    margin:10px 15px 0 0;
-  }
-  .ups img{
-    float: left;
-    height:100%;
-    width: 50%;
-    margin:0 4px 0 0;
-    cursor: auto;
-  }
-  .ups label{
-    float: left;
-    display: inline-block;
-    margin-top: 10px;
-   }
 </style>
 
