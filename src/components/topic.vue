@@ -20,31 +20,65 @@
 
     <Reply></Reply>
 
-    <!--<button @click="goTop" id="go_top">返回顶部</button>-->
+    <div @click="goTop" id="go_top" v-show="toTop">
+      <img src="../assets/goTop.png">
+    </div>
   </div>
 </template>
 
 <script>
+  let stop =false;
+  let timer =null;
   import auth from '../auth'
   export default{
     data () {
       return {
-        id: '', topic: {author: {}}, create: '', loginname: '', user: '', score: '', replies: [], replyTime: [], ups: []
+        id: '', topic: {author: {}}, create: '', loginname: '', user: '',
+        score: '', replies: [], replyTime: [], ups: [],
+        toTop:false,
       }
     },
     methods: {
-      goTop () {
-        window.scrollTo(0, 0)
+      //返回顶部功能
+      goTop: function() {
+        clearInterval(timer);
+        timer = setInterval(function() {
+          let curHeight = document.documentElement.scrollTop || document.body.scrollTop;  // 得到当前高度
+          let now = curHeight;
+          let speed = (0 - now) / 7;                              // 随着高度减速
+          speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+          if (curHeight === 0) {                          //当前高度为零,停止这次计时器
+            clearInterval(timer);
+          }
+          document.documentElement.scrollTop = curHeight + speed;
+          document.body.scrollTop = curHeight + speed;
+          stop = false;
+        }, 30);
+      },
+      needToTop: function() {
+        let curHeight = document.documentElement.scrollTop || document.body.scrollTop;
+        if(curHeight>250){
+          this.toTop =true;
+        }else{
+          this.toTop =false;
+        }
+        if(stop){
+          clearInterval(timer);
+        }
+        stop = true;
       }
+
     },
     mounted () {
       let path = this.$route.path
       this.id = path.split('/')[2]
-      // console.log(this.id)
       let param = {
         mdrender: true
       }
-      auth.getTopic(this, this.id, param)
+      auth.getTopic(this, this.id, param);
+      this.$nextTick(function () {
+        window.addEventListener('scroll', this.needToTop);
+      });
     }
   }
 </script>
@@ -67,7 +101,7 @@
   .box-card1{
     width: 70%;
     float: left;
-    margin:0 3%;
+    margin:0 2% 0 3%;
     background: #F9FBFC;
     text-align: left;
   }
@@ -85,7 +119,7 @@
     color:#ccc;
   }
   .box-card2{
-    width: 20%;
+    width: 21%;
     float: left;
     background: #F9FBFC;
     text-align: left;
@@ -122,9 +156,16 @@
   }
 
   #go_top{
-    position: absolute;
-    bottom: 20px;
-    right: 30px;
+    position: fixed;
+    bottom: 30px;
+    right: 15px;
+    cursor: pointer;
   }
+  #go_top img{
+    height:50px;
+    width: 50px;
+    border-radius: 2px;
+  }
+
 </style>
 

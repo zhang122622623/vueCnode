@@ -33,10 +33,10 @@ export default {
           context.replyTime[i] = t1[0] + ' ' + t2
           context.ups[i] = e.ups.length
         })
-        context.$store.commit('updateTopic',context.topic)
+        context.$store.commit('updateTopic',context.topic);
         context.$store.commit('updateReplies',context.replies);
-        context.$store.commit('updateReplyTime',context.replyTime)
-        console.log( context.replies)
+        context.$store.commit('updateReplyTime',context.replyTime);
+       // console.log( context.replies)
       } else {
         alert('Something Wrong!')
         this.$router.push('/')
