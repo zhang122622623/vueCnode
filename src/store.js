@@ -5,7 +5,7 @@ Vue.use(Vuex)
 let state = {
   topic: {},
   replies: [],
-  replyTime:[]
+  replyTime:[],
 }
 
 const mutations = {

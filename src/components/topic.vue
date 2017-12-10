@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper1">
+  <div class="wrapper1"  v-loading.fullscreen.lock="fullscreenLoading">
     <el-card class="box-card1">
       <div class="label">
         <p>{{topic.title}}</p>
@@ -35,7 +35,7 @@
       return {
         id: '', topic: {author: {}}, create: '', loginname: '', user: '',
         score: '', replies: [], replyTime: [], ups: [],
-        toTop:false,
+        toTop:false, fullscreenLoading:false,timer:null,
       }
     },
     methods: {
@@ -48,7 +48,7 @@
           let speed = (0 - now) / 7;                              // 随着高度减速
           speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
           if (curHeight === 0) {                          //当前高度为零,停止这次计时器
-            clearInterval(timer);
+              clearInterval(timer);
           }
           document.documentElement.scrollTop = curHeight + speed;
           document.body.scrollTop = curHeight + speed;
@@ -57,6 +57,7 @@
       },
       needToTop: function() {
         let curHeight = document.documentElement.scrollTop || document.body.scrollTop;
+        let that =this;
         if(curHeight>250){
           this.toTop =true;
         }else{
@@ -69,7 +70,11 @@
       }
 
     },
+    beforeDestroy(){
+      clearInterval(timer);
+    },
     mounted () {
+      auth.openFullScreen(this);
       let path = this.$route.path
       this.id = path.split('/')[2]
       let param = {
@@ -79,7 +84,7 @@
       this.$nextTick(function () {
         window.addEventListener('scroll', this.needToTop);
       });
-    }
+    },
   }
 </script>
 

@@ -58,5 +58,11 @@ export default {
     }, function (err) {
       console.log(err)
     })
-  }
+  },
+  openFullScreen(context) {
+    context.fullscreenLoading = true;
+    setTimeout(() => {
+      context.fullscreenLoading = false;
+    }, 500);
+  },
 }

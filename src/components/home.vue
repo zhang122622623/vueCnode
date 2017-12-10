@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper"  v-loading.lock="fullscreenLoading">
     <el-card class="box-card">
       <div v-for="(item,index) in info "  class="item">
           <img :src="item.author.avatar_url">
@@ -23,7 +23,7 @@
   export default {
     data () {
       return {
-        msg: '', info: [], param: {}, create: []
+        msg: '', info: [], param: {}, create: [], fullscreenLoading: false
       }
     },
     methods: {
@@ -39,6 +39,7 @@
       }
     },
     mounted () {
+      auth.openFullScreen(this);
       this.param = {
         page: 1,
         tab: 'share',
@@ -100,9 +101,11 @@
   }
   .item hr{
     clear: both;
-    height: 0;
+    height: 1px;
     border-top: 1px solid #ccc;
     border-bottom: none;
+    border-left: none;
+    border-right: none;
     background-color: #ccc;
     width: 100%;
     position: absolute;
