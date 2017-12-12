@@ -14,7 +14,7 @@
 
     <el-card class="box-card2">
       <p>作者:</p>
-      <img :src="topic.author.avatar_url"><span>{{loginname}}</span>
+      <img :src="topic.author.avatar_url" @click="goUser"><span  @click="goUser">{{loginname}}</span>
       <p>积分：{{score}}</p>
       <p>Github：<a :href="'https://github.com/'+loginname" target="_blank">https://github.com/{{loginname}}</a></p>
     </el-card>
@@ -69,6 +69,11 @@
           clearInterval(timer);
         }
         stop = true;
+      },
+      goUser(){
+        auth.getUser(this,this.loginname);
+        let router = '/user/' + this.loginname;
+        this.$router.push(router);
       }
 
     },
@@ -144,6 +149,7 @@
     border:1px solid #ccc;
     margin: 10px 15px 15px 0;
     float: left;
+    cursor: pointer;
   }
   .box-card2 span{
     float: left;
@@ -151,6 +157,7 @@
     margin-top: 40px;
     font-size: 19px;
     color:#ccc;
+    cursor: pointer;
   }
   .box-card2 a{
     text-decoration: none;

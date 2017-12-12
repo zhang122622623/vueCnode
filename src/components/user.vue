@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <el-card class="box-card1">
+    <el-card class="box-card3">
       <h3>作者:</h3>
       <hr>
       <div class="content">
@@ -10,12 +10,20 @@
         <p>Github：<a :href="'https://github.com/'+name" target="_blank">https://github.com/{{name}}</a></p>
       </div>
     </el-card>
-    <el-card class="box-card1">
+    <el-card class="box-card3">
       <h3>最近创建的话题:</h3>
       <hr>
       <div class="topics" v-for="(item, index) in recent_topics">
         <img :src="user.avatar_url">
-        <span @click="goTopic($event)" :id="index">{{item.title}}</span>
+        <span @click="goTopic($event,0)" :id="index">{{item.title}}</span>
+      </div>
+    </el-card>
+    <el-card class="box-card3">
+      <h3>最近参与的话题:</h3>
+      <hr>
+      <div class="topics" v-for="(item, index) in recent_replies">
+        <img :src="item.author.avatar_url">
+        <span @click="goTopic($event,1)" :id="index">{{item.title}}</span>
       </div>
     </el-card>
   </div>
@@ -26,7 +34,7 @@
   export default{
     data(){
       return {
-        name:'',create_at:'',recent_replies:[],recent_topics:[]
+        name:'',create_at:'',recent_topics:[],recent_replies:[]
       }
     },
     computed:{
@@ -44,15 +52,22 @@
           }
         });
         this.recent_replies = val.recent_replies;
-        console.log(  this.recent_topics);
+       // console.log(  this.recent_replies);
       }
     },
     methods:{
-      goTopic (e) {
+      goTopic (e,flag) {
         let index = parseInt(e.target.id);
-        let id = this.recent_topics[index].id;
-        let router = '/topic/' + id;
-        this.$router.push(router);
+        let id ='';
+        if(flag===0){
+           id = this.recent_topics[index].id;
+        }else{
+          id = this.recent_replies[index].id;
+        }
+        if(id!==''){
+          let router = '/topic/' + id;
+          this.$router.push(router);
+        }
       },
     },
     mounted(){
@@ -66,18 +81,19 @@
  .wrapper{
    height: 100%;
    width: 100%;
+   padding-top: 20px;
  }
- .box-card1{
+ .box-card3{
    width: 70%;
-   margin:20px auto;
+   margin:0 auto 10px;
    background: #F9FBFC;
    text-align: left;
  }
- .box-card1 h3{
+ .box-card3 h3{
    font-size: 19px;
    margin: 0;
  }
- .box-card1 hr {
+ .box-card3 hr {
    clear: both;
    height: 1px;
    border-top: 1px solid #e7e7e7;
@@ -92,12 +108,12 @@
    width: 99%;
    margin:0 auto;
  }
- .box-card1 p{
+ .box-card3 p{
    font-size: 16px;
    margin:0 auto 5px;
    clear: both;
  }
- .box-card1 img{
+ .box-card3 img{
    height:60px;
    width: 60px;
    border-radius: 4px;
@@ -105,19 +121,19 @@
    margin: 10px 15px 15px 0;
    float: left;
  }
- .box-card1 span{
+ .box-card3 span{
    float: left;
    display: inline-block;
    margin-top: 40px;
    font-size: 19px;
    color:#ccc;
  }
- .box-card1 a{
+ .box-card3 a{
    text-decoration: none;
    font-style: italic;
    font-size: 16px;
  }
- .box-card1 a:hover{
+ .box-card3 a:hover{
    color: wheat;
    text-decoration: underline;
  }
