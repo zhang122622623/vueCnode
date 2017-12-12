@@ -60,6 +60,9 @@ export default {
       console.log(err)
     })
   },
+  goTo(context,param){
+
+  },
   openFullScreen(context) {
     context.fullscreenLoading = true;
     setTimeout(() => {

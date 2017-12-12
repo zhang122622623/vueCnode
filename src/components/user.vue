@@ -12,9 +12,10 @@
     </el-card>
     <el-card class="box-card1">
       <h3>最近创建的话题:</h3>
+      <hr>
       <div class="topics" v-for="(item, index) in recent_topics">
         <img :src="user.avatar_url">
-        <span>{{item.title}}</span>
+        <span @click="goTopic($event)" :id="index">{{item.title}}</span>
       </div>
     </el-card>
   </div>
@@ -45,6 +46,14 @@
         this.recent_replies = val.recent_replies;
         console.log(  this.recent_topics);
       }
+    },
+    methods:{
+      goTopic (e) {
+        let index = parseInt(e.target.id);
+        let id = this.recent_topics[index].id;
+        let router = '/topic/' + id;
+        this.$router.push(router);
+      },
     },
     mounted(){
       this.name = this.$route.params.name;
@@ -113,17 +122,16 @@
    text-decoration: underline;
  }
  .topics{
-   width: 100%;
+   width: 98%;
+   margin:5px auto 0;
    height: 40px;
    line-height: 40px;
-   display: block;
-   clear: both;
  }
  .topics img{
    width: 30px;
    height: 30px;
-   margin:10px 15px 0 0;
-   border: none;
+   margin:5px 15px 0 0;
+   border: 0;
    border-radius:0;
  }
  .topics span{
@@ -131,5 +139,9 @@
    margin-top:5px;
    font-size: 17px;
    color: #122121;
+   cursor: pointer;
+ }
+ .topics span:hover{
+   color: #0086B3;
  }
 </style>
