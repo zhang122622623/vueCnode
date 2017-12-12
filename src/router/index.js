@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '../components/home.vue'
 import Header from '../components/header.vue'
 import Topic from '../components/topic.vue'
+import User from '../components/user.vue'
 
 Vue.use(Router)
 
@@ -23,6 +24,13 @@ export default new Router({
       path: '/topic/:id',
       components: {
         default: Topic,
+        header: Header
+      }
+    },
+    {
+      path: '/user/:name',
+      components: {
+        default: User,
         header: Header
       }
     }

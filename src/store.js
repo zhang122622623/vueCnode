@@ -6,17 +6,21 @@ let state = {
   topic: {},
   replies: [],
   replyTime:[],
+  user:{},
 }
 
 const mutations = {
   updateTopic(context,data){
-    context.topic = data
+    context.topic = data;
   },
   updateReplies(context,data){
-    context.replies = data
+    context.replies = data;
   },
   updateReplyTime(context,data){
-    context.replyTime = data
+    context.replyTime = data;
+  },
+  updateUser(context,data){
+    context.user = data;
   },
 }
 export default new Vuex.Store({

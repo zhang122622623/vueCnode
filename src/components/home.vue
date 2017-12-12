@@ -3,7 +3,7 @@
        element-loading-text="拼命加载中">
     <el-card class="box-card">
       <div v-for="(item,index) in info "  class="item">
-          <img :src="item.author.avatar_url">
+          <img :src="item.author.avatar_url" @click="goUser($event)" :id="index">
           <div class="context">
             <p @click="goTopic($event)" :id="index">{{item.title}}</p>
             <span>回复：{{item.reply_count}}</span>
@@ -33,10 +33,17 @@
         auth.getTopics(this, this.param)
       },
       goTopic (e) {
-        let index = parseInt(e.target.id)
-        let id = this.info[index].id
-        let router = '/topic/' + id
-        this.$router.push(router)
+        let index = parseInt(e.target.id);
+        let id = this.info[index].id;
+        let router = '/topic/' + id;
+        this.$router.push(router);
+      },
+      goUser(e){
+        let index = parseInt(e.target.id);
+        let name = this.info[index].author.loginname;
+        auth.getUser(this,name);
+        let router = '/user/' + name;
+        this.$router.push(router);
       }
     },
     mounted () {

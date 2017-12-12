@@ -4,7 +4,7 @@ export default {
       let success = res.data.success
       if (success) {
         let data = res.data.data
-        context.info = data
+        context.info = data;
         let create = []
         data.map(function (e, i) {
           create[i] = e.create_at.split('T')[0]
@@ -49,8 +49,9 @@ export default {
     context.$http.get('v1/user/' + name).then(function (res) {
       let success = res.data.success
       if (success) {
-        let data = res.data.data
-        context.score = data.score
+        let data = res.data.data;
+        context.score = data.score;
+        context.$store.commit('updateUser',data);
       } else {
         alert('Something Wrong!')
         this.$router.push('/')

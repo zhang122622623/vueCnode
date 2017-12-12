@@ -27,6 +27,7 @@
   </div>
 </template>
 
+//返回顶部有bug
 <script>
   let stop =false;
   let timer =null;
@@ -35,7 +36,7 @@
     data () {
       return {
         id: '', topic: {author: {}}, create: '', loginname: '', user: '',
-        score: '', replies: [], replyTime: [], ups: [],
+        score: '', replies: [], replyTime: [], ups: [],data:{},
         toTop:false, fullscreenLoading:false,timer:null,
       }
     },
