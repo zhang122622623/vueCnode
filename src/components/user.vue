@@ -22,7 +22,7 @@
       <h3>最近参与的话题:</h3>
       <hr>
       <div class="topics" v-for="(item, index) in recent_replies">
-        <img :src="item.author.avatar_url">
+        <img :src="item.author.avatar_url"  :id="index">
         <span @click="goTopic($event,1)" :id="index">{{item.title}}</span>
       </div>
     </el-card>
@@ -69,6 +69,7 @@
           this.$router.push(router);
         }
       },
+
     },
     mounted(){
       this.name = this.$route.params.name;
@@ -120,6 +121,7 @@
    border:1px solid #ccc;
    margin: 10px 15px 15px 0;
    float: left;
+   cursor: pointer;
  }
  .box-card3 span{
    float: left;

@@ -3,7 +3,7 @@
     <span>{{topic.reply_count}} 回复</span>
     <div class="reply" v-for="(item, index) in replies">
       <hr>
-      <img :src="item.author.avatar_url">
+      <img :src="item.author.avatar_url" :id="index" @click="goUser($event)">
       <span>{{item.author.loginname}} <label>{{replyTime[index]}}</label></span>
       <div id="content" v-html="item.content" class="replyContent"></div>
     </div>
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+  import auth from '../auth'
   export default {
     data () {
       return {}
@@ -25,6 +26,15 @@
       replyTime(){
         return this.$store.state.replyTime
       },
+    },
+    methods:{
+      goUser(e){
+        let index = parseInt(e.target.id);
+        let name = this.replies[index].author.loginname;
+        auth.getUser(this,name);
+        let router = '/user/' + name;
+        this.$router.push(router);
+      }
     }
   }
 </script>

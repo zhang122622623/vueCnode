@@ -114,7 +114,6 @@
     border-bottom: none;
     border-left: none;
     border-right: none;
-    background-color: #ccc;
     width: 100%;
     position: absolute;
     bottom:-5px;
