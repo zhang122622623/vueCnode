@@ -4,10 +4,12 @@ import Home from '../components/home.vue'
 import Header from '../components/header.vue'
 import Topic from '../components/topic.vue'
 import User from '../components/user.vue'
+import Api from '../components/api.vue'
 
 Vue.use(Router)
 
 export default new Router({
+  mode:'history',
   routes: [
     {
       path: '/',
@@ -33,6 +35,13 @@ export default new Router({
         default: User,
         header: Header
       }
-    }
+    },
+    {
+      path: '/api',
+      components: {
+        default: Api,
+        header: Header
+      }
+    },
   ]
 })

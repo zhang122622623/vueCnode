@@ -1,9 +1,9 @@
 <template>
   <div class="header">
-    <img src="../assets/cnodejs.svg"  title="Cnode" @click="back">
+    <img src="../assets/cnodejs.svg"  title="Cnode" @click="go('/')">
     <ul>
-      <li @click="back">首页</li>
-      <li>API</li>
+      <li @click="go('/')">首页</li>
+      <li @click="go('/api')">API</li>
       <li>关于</li>
     </ul>
   </div>
@@ -15,8 +15,8 @@
       return {}
     },
     methods: {
-      back () {
-        this.$router.push('/')
+      go (route) {
+        this.$router.push(route)
       }
     }
   }
