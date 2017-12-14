@@ -5,11 +5,12 @@ import Header from '../components/header.vue'
 import Topic from '../components/topic.vue'
 import User from '../components/user.vue'
 import Api from '../components/api.vue'
+import About from '../components/about.vue'
 
 Vue.use(Router)
 
 export default new Router({
-  mode:'history',
+  //mode:'history',
   routes: [
     {
       path: '/',
@@ -40,6 +41,13 @@ export default new Router({
       path: '/api',
       components: {
         default: Api,
+        header: Header
+      }
+    },
+    {
+      path: '/about',
+      components: {
+        default: About,
         header: Header
       }
     },
