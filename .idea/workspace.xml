@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04b494c6-696b-4830-8403-1c4e39ca3538" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/LOGO1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/avatar.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/markdown-github.css" />
-    </list>
+    <list default="true" id="04b494c6-696b-4830-8403-1c4e39ca3538" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -159,12 +154,12 @@
       <workItem from="1513083850088" duration="6293000" />
       <workItem from="1513169522429" duration="4482000" />
       <workItem from="1513255663067" duration="5986000" />
-      <workItem from="1513423219464" duration="1451000" />
+      <workItem from="1513423219464" duration="1647000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59379000" />
+    <option name="totallyTimeSpent" value="59575000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="379" y="104" width="1555" height="887" extended-state="1" />
