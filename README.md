@@ -2,7 +2,7 @@
 
 > A Vue.js project ，重构Cnode社区
 
-> 技术栈：vue+vue-router+vue-resource+Cnode API
+> 技术栈：vue+vue-router+vue-resource+vuex+Cnode API
 
 ## Build Setup
 
@@ -14,7 +14,7 @@ npm install
 npm run dev
 
 # build for production with minification
-npm run build
+npm run build （目前将该命令下的dist文件上传到git-page时，请求会报错，无法调用cnodeAPI）
 
 # build for production and view the bundle analyzer report
 npm run build --report
