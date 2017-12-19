@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04b494c6-696b-4830-8403-1c4e39ca3538" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/app.ee3bcb45e6ea4451215b.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/app.ee3bcb45e6ea4451215b.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/manifest.b101dfa1c4ea1044bf05.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/manifest.b101dfa1c4ea1044bf05.js.map" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-    </list>
+    <list default="true" id="04b494c6-696b-4830-8403-1c4e39ca3538" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -87,8 +80,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="74" />
-    <option name="y" value="94" />
+    <option name="x" value="314" />
+    <option name="y" value="97" />
     <option name="width" value="1555" />
     <option name="height" value="887" />
   </component>
@@ -182,10 +175,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59844000" />
+    <option name="totallyTimeSpent" value="59926000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="314" y="97" width="1555" height="887" extended-state="0" />
+    <frame x="314" y="97" width="1555" height="887" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23162004" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
