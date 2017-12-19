@@ -1,6 +1,9 @@
+const root =  process.env.API_ROOT;
+
 export default {
   getTopics (context, param) {
-    context.$http.get('v1/topics', { params: param }).then(function (res) {
+    console.log(root);
+    context.$http.get(root+'/topics', { params: param }).then(function (res) {
       let success = res.data.success
       if (success) {
         let data = res.data.data
@@ -19,7 +22,7 @@ export default {
   },
   getTopic (context, id, param) {
     let that = this
-    context.$http.get('v1/topic/' + id, { params: param }).then(function (res) {
+    context.$http.get(root+'/topic/' + id, { params: param }).then(function (res) {
       let success = res.data.success
       if (success) {
         context.topic = res.data.data
@@ -46,7 +49,7 @@ export default {
     })
   },
   getUser (context, name) {
-    context.$http.get('v1/user/' + name).then(function (res) {
+    context.$http.get(root+'/user/' + name).then(function (res) {
       let success = res.data.success
       if (success) {
         let data = res.data.data;
