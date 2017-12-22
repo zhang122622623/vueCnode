@@ -67,6 +67,8 @@
   }
   .box-card{
     width: 75%;
+    max-width:1300px;
+    min-width: 900px;
     margin:0 auto 15px;
     background: #F9FBFC;
   }

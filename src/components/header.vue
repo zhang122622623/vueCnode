@@ -26,6 +26,7 @@
   .header{
     height: 70px;
     width: 100%;
+    min-width: 900px;
     background: #545c64;
   }
   .header img{

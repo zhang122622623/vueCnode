@@ -112,6 +112,8 @@
   }
   .box-card1{
     width: 70%;
+    max-width:1200px;
+    min-width: 700px;
     float: left;
     margin:0 2% 0 3%;
     background: #F9FBFC;
@@ -136,6 +138,7 @@
     background: #F9FBFC;
     text-align: left;
     max-width: 320px;
+    min-width: 200px;
   }
   .box-card2 p{
     font-size: 16px;

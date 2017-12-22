@@ -47,6 +47,8 @@
   }
   .box-card3{
     width: 70%;
+    max-width:1300px;
+    min-width: 900px;
     margin:0 auto 10px;
     background: #F9FBFC;
     text-align: left;

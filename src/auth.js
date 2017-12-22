@@ -2,7 +2,7 @@ const root =  process.env.API_ROOT;
 
 export default {
   getTopics (context, param) {
-    console.log(root);
+   // console.log(root);
     context.$http.get(root+'/topics', { params: param }).then(function (res) {
       let success = res.data.success
       if (success) {

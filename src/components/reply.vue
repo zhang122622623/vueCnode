@@ -39,7 +39,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .reply-card{
     margin:15px 3% 15px;
   }
