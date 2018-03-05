@@ -21,9 +21,9 @@
 
     <Reply></Reply>
 
-    <div @click="goTop" id="go_top" v-show="toTop">
+    <!--<div @click="goTop" id="go_top" v-show="toTop">
       <img src="../assets/goTop.png">
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -88,9 +88,9 @@
         mdrender: true
       }
       auth.getTopic(this, this.id, param);
-      this.$nextTick(function () {
+     /* this.$nextTick(function () {
         window.addEventListener('scroll', this.needToTop);
-      });
+      });*/
     },
   }
 </script>
